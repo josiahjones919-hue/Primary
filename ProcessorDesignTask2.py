@@ -57,13 +57,13 @@ def evaluate_expr(expr, inputs):
     for row in inputs:
         temp = expr
 
-        # Replace variables with values
+        #replace variables with values
         for i, val in enumerate(row):
             var = chr(65+i)
             temp = temp.replace(var + "'", str(1 - val))
             temp = temp.replace(var, str(val))
 
-        # Insert AND between adjacent digits
+        #insert AND between adjacent digits
         new_temp = ""
         for i in range(len(temp)):
             new_temp += temp[i]
@@ -73,7 +73,7 @@ def evaluate_expr(expr, inputs):
 
         temp = new_temp
 
-        # Replace OR operator
+        #replace OR operator
         temp = temp.replace("+", " or ")
 
         results.append(int(eval(temp)))
@@ -109,13 +109,13 @@ def main():
     print("Canonical Expression:")
     print(expr)
 
-    # NOTE: K-map simplification placeholder
-    simplified = expr  # Replace with real K-map logic
+    
+    simplified = expr  #replace with real K-map logic
 
     print("Simplified Expression:")
     print(simplified)
 
-    # Validation
+    #validation
     result = evaluate_expr(simplified, inputs)
 
     if result == outputs:
